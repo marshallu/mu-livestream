@@ -7,25 +7,6 @@ if( function_exists('acf_add_local_field_group') ):
 		'title' => 'Livestreams',
 		'fields' => array(
 			array(
-				'key' => 'field_61801bdb8204e',
-				'label' => 'Display Livestream',
-				'name' => 'mu_livestream_display',
-				'type' => 'true_false',
-				'instructions' => '',
-				'required' => 0,
-				'conditional_logic' => 0,
-				'wrapper' => array(
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'message' => '',
-				'default_value' => 1,
-				'ui' => 0,
-				'ui_on_text' => '',
-				'ui_off_text' => '',
-			),
-			array(
 				'key' => 'field_61802015b151c',
 				'label' => 'Thumbnail',
 				'name' => 'mu_livestream_thumbnail',
@@ -62,8 +43,8 @@ if( function_exists('acf_add_local_field_group') ):
 					'class' => '',
 					'id' => '',
 				),
-				'display_format' => 'd/m/Y g:i a',
-				'return_format' => 'd/m/Y g:i a',
+				'display_format' => 'm/d/Y g:i a',
+				'return_format' => 'Y-m-d H:i:s',
 				'first_day' => 1,
 			),
 			array(
@@ -79,8 +60,8 @@ if( function_exists('acf_add_local_field_group') ):
 					'class' => '',
 					'id' => '',
 				),
-				'display_format' => 'd/m/Y g:i a',
-				'return_format' => 'd/m/Y g:i a',
+				'display_format' => 'm/d/Y g:i a',
+				'return_format' => 'Y-m-d H:i:s',
 				'first_day' => 1,
 			),
 			array(
