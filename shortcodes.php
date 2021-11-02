@@ -21,12 +21,59 @@ function mu_livestream_upcoming( $atts, $content = null ) {
 	$data = shortcode_atts(
 		array(
 			'ids'     => false,
+			'title'   => 'Upcoming Events',
 			'channel' => false,
 		),
 		$atts
 	);
 
-	$html  = '<div>';
+	$livestream_query = new WP_Query(
+		array(
+			'post_type'      => 'mu-livestream',
+			'posts_per_page' => 12,
+			'meta_key'       => 'mu_livestream_start', // phpcs:ignore
+			'orderby'        => array(
+				'meta_value' => 'ASC', // phpcs:ignore
+				'menu_order' => 'ASC',
+			),
+			'meta_query'     => array( // phpcs:ignore
+				'relation' => 'AND',
+				array(
+					'key'     => 'mu_livestream_end',
+					'value'   => date( 'Y-m-d H:i:s' ), // phpcs:ignore
+					'type'    => 'DATETIME',
+					'compare' => '>=',
+				),
+				array(
+					'key'     => 'mu_livestream_live_event_id',
+					'compare' => 'EXISTS',
+				),
+			),
+		)
+	);
+
+	$html = '<div>';
+	if ( $livestream_query->have_posts() ) {
+		$html .= '<h2>' . esc_attr( $data['title'] ) . '</h2>';
+		$html .= '<div class="flex flex-wrap lg:-mx-6">';
+
+		while ( $livestream_query->have_posts() ) {
+			$livestream_query->the_post();
+			$html .= '<div class="w-full lg:w-1/3 lg:px-6 mb-6">';
+			$html .= '<div>';
+			$html .= '<a href="https://livestream.com/marshallu/events/' . esc_attr( get_field( 'mu_livestream_live_event_id', get_the_ID() ) ) . '" class="text-gray-700 group no-underline">';
+			$html .= '<img src="' . esc_url( get_field( 'mu_livestream_thumbnail', get_the_ID() )['url'] ) . '" class="rounded-t" />';
+			$html .= '<div class="bg-gray-100 group-hover:bg-white px-6 py-4 border border-gray-100 border-t-0 rounded-b transition-colors duration-100 ease-in">';
+			$html .= '<div class="text-xl font-semibold">' . esc_attr( get_the_title() ) . '</div>';
+			$html .= '<div class="text-sm uppercase font-medium">' . esc_attr( Carbon::parse( get_field( 'mu_livestream_start', get_the_ID() ) )->diffForHumans() ) . '</div>';
+			$html .= '</div>';
+			$html .= '</a>';
+			$html .= '</div>';
+			$html .= '</div>';
+		}
+		$html .= '</div>';
+	}
+
 	$html .= '</div>';
 	return $html;
 }
@@ -54,16 +101,23 @@ function mu_livestream_past( $atts, $content = null ) {
 		array(
 			'post_type'      => 'mu-livestream',
 			'posts_per_page' => 12,
+			'meta_key'       => 'mu_livestream_start', // phpcs:ignore
 			'orderby'        => array(
+				'meta_value' => 'ASC', // phpcs:ignore
 				'menu_order' => 'ASC',
-				'title'      => 'ASC',
 			),
 			'meta_query'     => array( // phpcs:ignore
+				'reation' => 'AND',
 				array(
 					'key'     => 'mu_livestream_end',
 					'value'   => date( 'Y-m-d H:i:s' ), // phpcs:ignore
 					'type'    => 'DATETIME',
 					'compare' => '<=',
+				),
+				array(
+					'key'     => 'mu_livestream_archive_id',
+					'value'   => '',
+					'compare' => '!=',
 				),
 			),
 		)

@@ -154,3 +154,6 @@ add_action( 'add_meta_boxes', 'remove_yoast_metabox_videos', 11 );
 
 add_action( 'init', 'mu_livestream_post_type' );
 add_action( 'init', 'mu_add_channel_taxonomy' );
+
+// if future time redirect to live url
+// if past time redirect to archive url
