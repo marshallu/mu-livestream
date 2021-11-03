@@ -40,7 +40,7 @@ if( function_exists('acf_add_local_field_group') ):
 				'conditional_logic' => 0,
 				'wrapper' => array(
 					'width' => '',
-					'class' => '',
+					'class' => 'w-full lg:w-1/2',
 					'id' => '',
 				),
 				'display_format' => 'm/d/Y g:i a',
@@ -85,9 +85,9 @@ if( function_exists('acf_add_local_field_group') ):
 			),
 			array(
 				'key' => 'field_61801c5ec77e2',
-				'label' => 'Archive Event ID',
-				'name' => 'mu_livestream_archive_id',
-				'type' => 'text',
+				'label' => 'Archive Event URL',
+				'name' => 'mu_livestream_archive_url',
+				'type' => 'url',
 				'instructions' => '',
 				'required' => 0,
 				'conditional_logic' => 0,
@@ -98,9 +98,6 @@ if( function_exists('acf_add_local_field_group') ):
 				),
 				'default_value' => '',
 				'placeholder' => '',
-				'prepend' => '',
-				'append' => '',
-				'maxlength' => '',
 			),
 		),
 		'location' => array(
