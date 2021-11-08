@@ -177,10 +177,10 @@ function mu_livestream_redirect() {
 		global $post;
 
 		if ( Carbon::parse( get_field( 'mu_livestream_end', $post->ID ) ) < Carbon::now() && get_field( 'mu_livestream_archive_url', $post->ID ) ) {
-			wp_safe_redirect( esc_url( get_field( 'mu_livestream_archive_url', $post->ID ) ), 301 );
+			wp_redirect( esc_url( get_field( 'mu_livestream_archive_url', $post->ID ) ), 301 );
 			exit;
 		} else {
-			wp_safe_redirect( esc_url( 'https://livestream.com/marshallu/events/' . get_field( 'mu_livestream_live_event_id', $post->ID ) ), 301 );
+			wp_redirect( esc_url( 'https://livestream.com/marshallu/events/' . get_field( 'mu_livestream_live_event_id', $post->ID ) ), 301 );
 			exit;
 		}
 	}
