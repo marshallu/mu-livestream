@@ -13,6 +13,8 @@
  * Author: Christopher McComas
  */
 
+use Carbon\Carbon;
+
 // require WP_PLUGIN_DIR . '/mu-livestream/vendor/autoload.php';
 
 // use Carbon\Carbon;
@@ -152,8 +154,38 @@ function remove_yoast_metabox_videos() {
 }
 add_action( 'add_meta_boxes', 'remove_yoast_metabox_videos', 11 );
 
+/**
+ * Allow for YouTube and LiveStream to use wp_safe_redirect
+ *
+ * @param array $hosts The array of default hosts allowed.
+ * @return array
+ */
+function mu_livestream_allowed_redirect_hosts( $hosts ) {
+	$safe_hosts = array(
+		'www.youtube.com',
+		'www.livestream.com',
+	);
+	return array_merge( $hosts, $safe_hosts );
+};
+add_filter( 'allowed_redirect_hosts', 'mu_livestream_allowed_redirect_hosts' );
+
+/**
+ * Redirect attachment pages
+ */
+function mu_livestream_redirect() {
+	if ( is_singular( 'mu-livestream' ) ) {
+		global $post;
+
+		if ( Carbon::parse( get_field( 'mu_livestream_end', $post->ID ) ) < Carbon::now() && get_field( 'mu_livestream_archive_url', $post->ID ) ) {
+			wp_safe_redirect( esc_url( get_field( 'mu_livestream_archive_url', $post->ID ) ), 301 );
+			exit;
+		} else {
+			wp_safe_redirect( esc_url( 'https://livestream.com/marshallu/events/' . get_field( 'mu_livestream_live_event_id', $post->ID ) ), 301 );
+			exit;
+		}
+	}
+}
+add_action( 'template_redirect', 'mu_livestream_redirect' );
+
 add_action( 'init', 'mu_livestream_post_type' );
 add_action( 'init', 'mu_add_channel_taxonomy' );
-
-// if future time redirect to live url
-// if past time redirect to archive url
