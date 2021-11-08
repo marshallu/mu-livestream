@@ -187,5 +187,50 @@ function mu_livestream_redirect() {
 }
 add_action( 'template_redirect', 'mu_livestream_redirect' );
 
+// Custom columns, start date time/end date time
+
+/**
+ * Edit columns displayed in the Dashboard for Program Page post types
+ *
+ * @param array $columns The array of columns.
+ * @return array
+ */
+function mu_edit_livestream_columns( $columns ) {
+	unset( $columns['wpseo-score'] );
+	unset( $columns['wpseo-score-readability'] );
+	unset( $columns['wpseo-title'] );
+	unset( $columns['wpseo-metadesc'] );
+	unset( $columns['wpseo-focuskw'] );
+	unset( $columns['wpseo-links'] );
+	unset( $columns['wpseo-linked'] );
+	unset( $columns['date'] );
+	unset( $columns['modified'] );
+	$columns['mu_livestream_start_time'] = __( 'Start Time', 'your_text_domain' );
+	$columns['mu_livestream_end_time']   = __( 'End Time', 'your_text_domain' );
+	$columns['date']                     = 'Date';
+	$columns['modified']                 = 'Modified';
+	return $columns;
+}
+add_filter( 'manage_edit-mu-livestream_columns', 'mu_edit_livestream_columns' );
+
+/**
+ * Getting the data to display for each column.
+ *
+ * @param string  $column The string name of the column.
+ * @param integer $post_id The integer Post ID.
+ */
+function mu_livestream_custom_columns( $column, $post_id ) {
+	switch ( $column ) {
+		case 'mu_livestream_start_time':
+			echo esc_attr( get_field( 'mu_livestream_start', $post_id ) );
+			break;
+
+		case 'mu_livestream_end_time':
+			echo esc_attr( get_field( 'mu_livestream_end', $post_id ) );
+			break;
+	}
+}
+add_action( 'manage_mu-livestream_posts_custom_column', 'mu_livestream_custom_columns', 10, 2 );
+
 add_action( 'init', 'mu_livestream_post_type' );
 add_action( 'init', 'mu_add_channel_taxonomy' );
