@@ -62,8 +62,8 @@ function mu_livestream_upcoming( $atts, $content = null ) {
 			$html .= '<div class="w-full lg:w-1/3 lg:px-6 mb-6">';
 			$html .= '<div>';
 			$html .= '<a href="https://vimeo.com/event/' . esc_attr( get_field( 'mu_livestream_live_event_id', get_the_ID() ) ) . '" class="text-gray-700 group no-underline">';
-			$html .= '<img src="' . esc_url( get_field( 'mu_livestream_thumbnail', get_the_ID() )['url'] ) . '" class="rounded-t border-r-2 border-l-2 border-t-2 border-transparent transition-all duration-1000 ease-in group-hover:border-green" />';
-			$html .= '<div class="bg-gray-100 px-6 py-4 rounded-b border-r-2 border-l-2 border-b-2 border-transparent transition-all duration-1000 ease-in group-hover:border-green">';
+			$html .= '<img src="' . esc_url( get_field( 'mu_livestream_thumbnail', get_the_ID() )['url'] ) . '" class="rounded-t" />';
+			$html .= '<div class="bg-gray-100 px-6 py-4 rounded-b">';
 			$html .= '<div class="text-xl font-semibold">' . esc_attr( get_the_title() ) . '</div>';
 			$html .= '<div class="text-sm uppercase font-medium">' . esc_attr( Carbon::parse( get_field( 'mu_livestream_start', get_the_ID() ) )->diffForHumans() ) . '</div>';
 			$html .= '</div>';
