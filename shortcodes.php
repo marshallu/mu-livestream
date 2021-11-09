@@ -64,7 +64,7 @@ function mu_livestream_upcoming( $atts, $content = null ) {
 			$html .= '<a href="https://vimeo.com/event/' . esc_attr( get_field( 'mu_livestream_live_event_id', get_the_ID() ) ) . '" class="text-gray-700 group no-underline">';
 			$html .= '<img src="' . esc_url( get_field( 'mu_livestream_thumbnail', get_the_ID() )['url'] ) . '" class="rounded-t" />';
 			$html .= '<div class="bg-gray-100 px-6 py-4 rounded-b">';
-			$html .= '<div class="text-xl font-semibold">' . esc_attr( get_the_title() ) . '</div>';
+			$html .= '<div class="text-xl font-semibold group-hover:underline">' . esc_attr( get_the_title() ) . '</div>';
 			$html .= '<div class="text-sm uppercase font-medium">' . esc_attr( Carbon::parse( get_field( 'mu_livestream_start', get_the_ID() ) )->diffForHumans() ) . '</div>';
 			$html .= '</div>';
 			$html .= '</a>';
