@@ -163,7 +163,9 @@ add_action( 'add_meta_boxes', 'remove_yoast_metabox_videos', 11 );
 function mu_livestream_allowed_redirect_hosts( $hosts ) {
 	$safe_hosts = array(
 		'www.youtube.com',
-		'www.livestream.com',
+		'youtube.com',
+		'www.vimeo.com',
+		'vimeo.com',
 	);
 	return array_merge( $hosts, $safe_hosts );
 };
@@ -180,7 +182,7 @@ function mu_livestream_redirect() {
 			wp_redirect( esc_url( get_field( 'mu_livestream_archive_url', $post->ID ) ), 301 );
 			exit;
 		} else {
-			wp_redirect( esc_url( 'https://livestream.com/marshallu/events/' . get_field( 'mu_livestream_live_event_id', $post->ID ) ), 301 );
+			wp_redirect( esc_url( 'https://vimeo.com/event/' . get_field( 'mu_livestream_live_event_id', $post->ID ) ), 301 );
 			exit;
 		}
 	}
