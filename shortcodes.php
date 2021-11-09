@@ -61,9 +61,9 @@ function mu_livestream_upcoming( $atts, $content = null ) {
 			$livestream_query->the_post();
 			$html .= '<div class="w-full lg:w-1/3 lg:px-6 mb-6">';
 			$html .= '<div>';
-			$html .= '<a href="https://vimeo.com/event/' . esc_attr( get_field( 'mu_livestream_live_event_id', get_the_ID() ) ) . '" class="text-gray-700 group no-underline">';
+			$html .= '<a href="https://vimeo.com/event/' . esc_attr( get_field( 'mu_livestream_live_event_id', get_the_ID() ) ) . '" class="text-gray-700 group no-underline hover:shadow-sm">';
 			$html .= '<img src="' . esc_url( get_field( 'mu_livestream_thumbnail', get_the_ID() )['url'] ) . '" class="rounded-t" />';
-			$html .= '<div class="bg-gray-100 group-hover:bg-white px-6 py-4 border border-gray-100 border-t-0 rounded-b transition-colors duration-100 ease-in">';
+			$html .= '<div class="bg-gray-100 group-hover:bg-white px-6 py-4 border border-gray-100 border-t-0 rounded-b">';
 			$html .= '<div class="text-xl font-semibold">' . esc_attr( get_the_title() ) . '</div>';
 			$html .= '<div class="text-sm uppercase font-medium">' . esc_attr( Carbon::parse( get_field( 'mu_livestream_start', get_the_ID() ) )->diffForHumans() ) . '</div>';
 			$html .= '</div>';
@@ -132,7 +132,7 @@ function mu_livestream_past( $atts, $content = null ) {
 			$livestream_query->the_post();
 			$html .= '<div class="w-full lg:w-1/3 lg:px-6 mb-6">';
 			$html .= '<div>';
-			$html .= '<a href="' . esc_url( get_field( 'mu_livestream_archive_url', get_the_ID() ) ) . '" class="text-gray-700 group no-underline hover:shadow-sm">';
+			$html .= '<a href="' . esc_url( get_field( 'mu_livestream_archive_url', get_the_ID() ) ) . '" class="text-gray-700 no-underline hover:shadow-sm">';
 			$html .= '<img src="' . esc_url( get_field( 'mu_livestream_thumbnail', get_the_ID() )['url'] ) . '" class="rounded-t" />';
 			$html .= '<div class="bg-gray-100 group-hover:bg-white px-6 py-4 border border-gray-100 border-t-0 rounded-b">';
 			$html .= '<div class="text-xl font-semibold">' . esc_attr( get_the_title() ) . '</div>';
