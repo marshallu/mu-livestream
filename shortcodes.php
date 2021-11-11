@@ -40,7 +40,7 @@ function mu_livestream_upcoming( $atts, $content = null ) {
 				'relation' => 'AND',
 				array(
 					'key'     => 'mu_livestream_end',
-					'value'   => date( 'Y-m-d H:i:s' ), // phpcs:ignore
+					'value'   => Carbon::now()->setTimezone( 'America/Detroit' )->format( 'Y-m-d H:i:s' ), // phpcs:ignore
 					'type'    => 'DATETIME',
 					'compare' => '>=',
 				),
@@ -75,7 +75,6 @@ function mu_livestream_upcoming( $atts, $content = null ) {
 	}
 
 	$html .= '</div>';
-	wp_reset_postdata();
 	return $html;
 }
 add_shortcode( 'mu_livestream_upcoming', 'mu_livestream_upcoming' );
@@ -98,8 +97,6 @@ function mu_livestream_past( $atts, $content = null ) {
 		$atts
 	);
 
-	// echo date( 'Y-m-d H:i:s' );
-
 	$livestream_query = new WP_Query(
 		array(
 			'post_type'      => 'mu-livestream',
@@ -115,7 +112,7 @@ function mu_livestream_past( $atts, $content = null ) {
 					'key'     => 'mu_livestream_end',
 					'value'   => Carbon::now()->setTimezone( 'America/Detroit' )->format( 'Y-m-d H:i:s' ), // phpcs:ignore
 					'type'    => 'DATETIME',
-					'compare' => '>=',
+					'compare' => '<=',
 				),
 				array(
 					'key'     => 'mu_livestream_archive_url',
@@ -150,7 +147,6 @@ function mu_livestream_past( $atts, $content = null ) {
 		$html .= '<p>No past livestreams found.</p>';
 	}
 	$html .= '</div>';
-	wp_reset_postdata();
 	return $html;
 }
 add_shortcode( 'mu_livestream_past', 'mu_livestream_past' );
