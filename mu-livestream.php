@@ -178,7 +178,7 @@ function mu_livestream_redirect() {
 	if ( is_singular( 'mu-livestream' ) ) {
 		global $post;
 
-		if ( Carbon::parse( get_field( 'mu_livestream_end', $post->ID ) ) < Carbon::now()->setTimezone( 'America/Detroit' ) && get_field( 'mu_livestream_archive_url', $post->ID ) ) {
+		if ( Carbon::parse( get_field( 'mu_livestream_end', $post->ID )->setTimezone( 'America/Detroit' ) ) < Carbon::now()->setTimezone( 'America/Detroit' ) && get_field( 'mu_livestream_archive_url', $post->ID ) ) {
 			wp_redirect( esc_url( get_field( 'mu_livestream_archive_url', $post->ID ) ), 301 );
 			exit;
 		}
