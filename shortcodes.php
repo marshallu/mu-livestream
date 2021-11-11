@@ -33,7 +33,7 @@ function mu_livestream_upcoming( $atts, $content = null ) {
 			'posts_per_page' => 12,
 			'meta_key'       => 'mu_livestream_start', // phpcs:ignore
 			'orderby'        => array(
-				'meta_value' => 'ASC', // phpcs:ignore
+				'meta_value' => 'mu_livestream_start', // phpcs:ignore
 				'menu_order' => 'ASC',
 			),
 			'meta_query'     => array( // phpcs:ignore
