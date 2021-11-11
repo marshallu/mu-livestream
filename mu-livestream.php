@@ -229,7 +229,7 @@ add_action( 'template_redirect', 'mu_livestream_external_redirect' );
  * Proper way to enqueue scripts and styles
  */
 function mu_livestream_scripts() {
-	wp_enqueue_style( 'mu-livestream', plugin_dir_path( __FILE__ ) . 'css/mu-livestream.css', '', true );
+	wp_enqueue_style( 'mu-livestream', plugin_dir_url( __FILE__ ) . 'css/mu-livestream.css', '', true );
 }
 add_action( 'wp_enqueue_scripts', 'mu_livestream_scripts' );
 
