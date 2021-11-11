@@ -222,11 +222,11 @@ add_filter( 'manage_edit-mu-livestream_columns', 'mu_edit_livestream_columns' );
 function mu_livestream_custom_columns( $column, $post_id ) {
 	switch ( $column ) {
 		case 'mu_livestream_start_time':
-			echo esc_attr( get_field( 'mu_livestream_start', $post_id ) );
+			echo esc_attr( Carbon::parse( get_field( 'mu_livestream_start', $post_id ) )->toDayDateTimeString() );
 			break;
 
 		case 'mu_livestream_end_time':
-			echo esc_attr( get_field( 'mu_livestream_end', $post_id ) );
+			echo esc_attr( Carbon::parse( get_field( 'mu_livestream_end', $post_id ) )->toDayDateTimeString() );
 			break;
 	}
 }
