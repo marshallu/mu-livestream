@@ -103,6 +103,22 @@ if( function_exists('acf_add_local_field_group') ):
 				'maxlength' => '',
 			),
 			array(
+				'key' => 'field_618d75aa8be7a',
+				'label' => 'Archive Event URL',
+				'name' => 'mu_livestream_archive_event_url',
+				'type' => 'url',
+				'instructions' => '',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'default_value' => '',
+				'placeholder' => '',
+			),
+			array(
 				'key' => 'field_618d677af0201',
 				'label' => 'Enable Chat',
 				'name' => 'mu_livestream_chat',

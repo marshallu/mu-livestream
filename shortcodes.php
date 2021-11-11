@@ -46,9 +46,9 @@ function mu_livestream_live( $atts, $content = null ) {
 				),
 				array(
 					'key'     => 'mu_livestream_start',
-					'value'   => Carbon::now()->setTimezone( 'America/Detroit' )->format( 'Y-m-d H:i:s' ), // phpcs:ignore
-					'type'    => 'DATETIME',
-					'compare' => '<=',
+					'value'   => Carbon::now()->setTimezone( 'America/Detroit' )->format( 'Y-m-d' ), // phpcs:ignore
+					'type'    => 'DATE',
+					'compare' => '=',
 				),
 				array(
 					'key'     => 'mu_livestream_live_event_id',
@@ -114,10 +114,16 @@ function mu_livestream_upcoming( $atts, $content = null ) {
 			'meta_query'     => array( // phpcs:ignore
 				'relation' => 'AND',
 				array(
-					'key'     => 'mu_livestream_start',
+					'key'     => 'mu_livestream_end',
 					'value'   => Carbon::now()->setTimezone( 'America/Detroit' )->format( 'Y-m-d H:i:s' ), // phpcs:ignore
 					'type'    => 'DATETIME',
 					'compare' => '>=',
+				),
+				array(
+					'key'     => 'mu_livestream_start',
+					'value'   => Carbon::now()->setTimezone( 'America/Detroit' )->format( 'Y-m-d' ), // phpcs:ignore
+					'type'    => 'DATE',
+					'compare' => '!=',
 				),
 				array(
 					'key'     => 'mu_livestream_live_event_id',

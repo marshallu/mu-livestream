@@ -215,6 +215,17 @@ function mu_livestream_custom_columns( $column, $post_id ) {
 add_action( 'manage_mu-livestream_posts_custom_column', 'mu_livestream_custom_columns', 10, 2 );
 
 /**
+ * If set to external URL go ahead and redirect there.
+ */
+function mu_livestream_external_redirect() {
+	if ( get_field( 'mu_livestream_archive_event_url' ) ) {
+		wp_redirect( get_field( 'mu_livestream_archive_event_url' ), 301 );
+		exit;
+	}
+}
+add_action( 'template_redirect', 'mu_livestream_external_redirect' );
+
+/**
  * Proper way to enqueue scripts and styles
  */
 function mu_livestream_scripts() {
