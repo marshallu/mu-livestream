@@ -88,7 +88,7 @@ if( function_exists('acf_add_local_field_group') ):
 				'label' => 'Archive Event ID',
 				'name' => 'mu_livestream_archive_event_id',
 				'type' => 'text',
-				'instructions' => '',
+				'instructions' => 'For the archive embed player to display the End Date/Time must be in the past and this field must have an ID.',
 				'required' => 0,
 				'conditional_logic' => 0,
 				'wrapper' => array(

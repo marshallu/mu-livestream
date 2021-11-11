@@ -22,7 +22,7 @@ function mu_livestream_live( $atts, $content = null ) {
 	$data = shortcode_atts(
 		array(
 			'ids'     => false,
-			'title'   => 'Live Now',
+			'title'   => "Today's Events",
 			'channel' => false,
 		),
 		$atts
