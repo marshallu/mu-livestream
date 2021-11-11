@@ -206,7 +206,7 @@ function mu_livestream_past( $atts, $content = null ) {
 			$livestream_query->the_post();
 			$html .= '<div class="w-full lg:w-1/3 lg:px-6 mb-6">';
 			$html .= '<div>';
-			$html .= '<a href="' . esc_url( get_field( 'mu_livestream_archive_url', get_the_ID() ) ) . '" class="text-gray-700 group no-underline">';
+			$html .= '<a href="' . get_the_permalink() . '" class="text-gray-700 group no-underline">';
 			$html .= '<img src="' . esc_url( get_field( 'mu_livestream_thumbnail', get_the_ID() )['url'] ) . '" class="rounded-t" />';
 			$html .= '<div class="bg-gray-100 px-6 py-4 rounded-b">';
 			$html .= '<div class="text-xl font-semibold group-hover:underline">' . esc_attr( get_the_title() ) . '</div>';
