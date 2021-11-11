@@ -174,17 +174,17 @@ add_filter( 'allowed_redirect_hosts', 'mu_livestream_allowed_redirect_hosts' );
 /**
  * Redirect attachment pages
  */
-// function mu_livestream_redirect() {
-// 	if ( is_singular( 'mu-livestream' ) ) {
-// 		global $post;
+function mu_livestream_redirect() {
+	if ( is_singular( 'mu-livestream' ) ) {
+		global $post;
 
-// 		if ( Carbon::parse( get_field( 'mu_livestream_end', $post->ID ) )->setTimezone( 'America/Detroit' ) < Carbon::now()->setTimezone( 'America/Detroit' ) && get_field( 'mu_livestream_archive_url', $post->ID ) ) {
-// 			wp_redirect( esc_url( get_field( 'mu_livestream_archive_url', $post->ID ) ), 301 );
-// 			exit;
-// 		}
-// 	}
-// }
-// add_action( 'template_redirect', 'mu_livestream_redirect' );
+		if ( Carbon::parse( get_field( 'mu_livestream_end', $post->ID ) ) < Carbon::now()->setTimezone( 'America/Detroit' ) && Carbon::parse( get_field( 'mu_livestream_start', $post->ID ) ) > Carbon::now()->setTimezone( 'America/Detroit' ) && get_field( 'mu_livestream_archive_url', $post->ID ) ) {
+			wp_redirect( esc_url( get_field( 'mu_livestream_archive_url', $post->ID ) ), 301 );
+			exit;
+		}
+	}
+}
+add_action( 'template_redirect', 'mu_livestream_redirect' );
 
 /**
  * Edit columns displayed in the Dashboard for Program Page post types
