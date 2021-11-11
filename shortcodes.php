@@ -113,7 +113,7 @@ function mu_livestream_past( $atts, $content = null ) {
 				'reation' => 'AND',
 				array(
 					'key'     => 'mu_livestream_end',
-					'value'   => wp_date("Y-m-d H:i:s", null, 'America/Detroit' ), // phpcs:ignore
+					'value'   => wp_date( 'Y-m-d H:i:s' ), // phpcs:ignore
 					'type'    => 'DATETIME',
 					'compare' => '<=',
 				),
