@@ -114,7 +114,7 @@ function mu_livestream_upcoming( $atts, $content = null ) {
 			'meta_query'     => array( // phpcs:ignore
 				'relation' => 'AND',
 				array(
-					'key'     => 'mu_livestream_end',
+					'key'     => 'mu_livestream_start',
 					'value'   => Carbon::now()->setTimezone( 'America/Detroit' )->format( 'Y-m-d H:i:s' ), // phpcs:ignore
 					'type'    => 'DATETIME',
 					'compare' => '>=',
