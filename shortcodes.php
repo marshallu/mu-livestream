@@ -98,7 +98,7 @@ function mu_livestream_past( $atts, $content = null ) {
 		$atts
 	);
 
-	echo wp_date("Y-m-d H:i:s", null, 'America/Detroit' );
+	echo Carbon::now( 'Y-m-d H:i:s' );
 
 	$livestream_query = new WP_Query(
 		array(
@@ -113,7 +113,7 @@ function mu_livestream_past( $atts, $content = null ) {
 				'reation' => 'AND',
 				array(
 					'key'     => 'mu_livestream_end',
-					'value'   => wp_date( 'Y-m-d H:i:s' ), // phpcs:ignore
+					'value'   => Carbon::now( 'Y-m-d H:i:s' ), // phpcs:ignore
 					'type'    => 'DATETIME',
 					'compare' => '<=',
 				),
