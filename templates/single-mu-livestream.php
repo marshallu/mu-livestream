@@ -28,7 +28,8 @@ get_template_part( 'template-parts/hero/no-hero' ); ?>
 			</header>
 			<article <?php post_class( 'entry-content' ); ?> id="post-<?php the_ID(); ?>">
 			<?php
-			if ( Carbon::parse( get_field( 'mu_livestream_end', $post->ID ) ) < Carbon::now()->setTimezone( 'America/Detroit' ) && Carbon::parse( get_field( 'mu_livestream_start', $post->ID ) ) > Carbon::now()->setTimezone( 'America/Detroit' ) ) { ?>
+			if ( get_field( 'mu_livestream_archive_event_id' ) ) {
+				?>
 				<div class="yt relative h-0" style="padding-bottom: 56.25%;">
 					<iframe class="absolute top-0 left-0 h-full w-full" src="https://player.vimeo.com/video/<?php echo esc_attr( get_field( 'mu_livestream_archive_event_id' ) ); ?>?h=7d8cbf925c" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 				</div>
