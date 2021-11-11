@@ -211,6 +211,7 @@ function mu_livestream_past( $atts, $content = null ) {
 			$html .= '<div class="bg-gray-100 px-6 py-4 rounded-b">';
 			$html .= '<div class="text-xl font-semibold group-hover:underline">' . esc_attr( get_the_title() ) . '</div>';
 			$html .= '<div class="text-sm uppercase font-medium mt-1">' . esc_attr( Carbon::parse( get_field( 'mu_livestream_end', get_the_ID() ) )->timezone( 'UTC' )->diffForHumans() ) . '</div>';
+			$html .= '<div class="text-sm uppercase font-medium mt-1">' . esc_attr( Carbon::now() ) . '</div>';
 			$html .= '</div>';
 			$html .= '</a>';
 			$html .= '</div>';
