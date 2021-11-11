@@ -115,7 +115,7 @@ function mu_livestream_past( $atts, $content = null ) {
 					'key'     => 'mu_livestream_end',
 					'value'   => Carbon::now()->setTimezone( 'America/Detroit' )->format( 'Y-m-d H:i:s' ), // phpcs:ignore
 					'type'    => 'DATETIME',
-					'compare' => '<=',
+					'compare' => '>=',
 				),
 				array(
 					'key'     => 'mu_livestream_archive_url',
