@@ -104,7 +104,7 @@ function mu_livestream_past( $atts, $content = null ) {
 			'meta_key'       => 'mu_livestream_start', // phpcs:ignore
 			'orderby'        => array(
 				'meta_value' => 'mu_livestream_start', // phpcs:ignore
-				'menu_order' => 'ASC',
+				'menu_order' => 'DESC',
 			),
 			'meta_query'     => array( // phpcs:ignore
 				'reation' => 'AND',
