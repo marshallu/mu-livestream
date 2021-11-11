@@ -189,7 +189,7 @@ function mu_livestream_past( $atts, $content = null ) {
 					'compare' => '<=',
 				),
 				array(
-					'key'     => 'mu_livestream_archive_url',
+					'key'     => 'mu_livestream_archive_event_id',
 					'value'   => '',
 					'compare' => '!=',
 				),
