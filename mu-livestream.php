@@ -181,9 +181,6 @@ function mu_livestream_redirect() {
 		if ( Carbon::parse( get_field( 'mu_livestream_end', $post->ID ) ) < Carbon::now()->setTimezone( 'America/Detroit' ) && get_field( 'mu_livestream_archive_url', $post->ID ) ) {
 			wp_redirect( esc_url( get_field( 'mu_livestream_archive_url', $post->ID ) ), 301 );
 			exit;
-		} else {
-			wp_redirect( esc_url( 'https://vimeo.com/event/' . get_field( 'mu_livestream_live_event_id', $post->ID ) ), 301 );
-			exit;
 		}
 	}
 }
@@ -239,6 +236,23 @@ function mu_livestream_scripts() {
 	wp_enqueue_style( 'mu-livestream', plugin_dir_path( __FILE__ ) . 'css/mu-livestream.css', '', true );
 }
 add_action( 'wp_enqueue_scripts', 'mu_livestream_scripts' );
+
+/**
+ * Load Livestream Template
+ *
+ * @param string $template The filename of the template for a single program.
+ * @return string
+ */
+function load_program_template( $template ) {
+	global $post;
+
+	if ( 'mu-livestream' === $post->post_type && locate_template( array( 'single-mu-livestream.php' ) ) !== $template ) {
+		return plugin_dir_path( __FILE__ ) . 'templates/single-mu-livestream.php';
+	}
+
+	return $template;
+}
+add_filter( 'single_template', 'load_program_template' );
 
 add_action( 'init', 'mu_livestream_post_type' );
 add_action( 'init', 'mu_add_channel_taxonomy' );
