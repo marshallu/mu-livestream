@@ -32,10 +32,9 @@ function mu_livestream_upcoming( $atts, $content = null ) {
 			'post_type'      => 'mu-livestream',
 			'posts_per_page' => 12,
 			'meta_key'       => 'mu_livestream_start', // phpcs:ignore
-			'orderby'        => array(
-				'meta_value' => 'meta_key', // phpcs:ignore
-				'menu_order' => 'DESC',
-			),
+			'orderby'        => 'meta_value_num',
+			'meta_type'      => 'DATETIME',
+			'order'          => 'DESC',
 			'meta_query'     => array( // phpcs:ignore
 				'relation' => 'AND',
 				array(
