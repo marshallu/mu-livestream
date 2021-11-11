@@ -8,5 +8,10 @@ module.exports = {
 			'./source/css/*/*.css',
 			'./*.php',
 		],
-	}
+	},
+	variants: {
+		extend: {
+			gradientColorStops: ['active', 'group-hover'],
+		},
+	},
 }
