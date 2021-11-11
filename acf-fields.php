@@ -45,7 +45,7 @@ if( function_exists('acf_add_local_field_group') ):
 				),
 				'display_format' => 'm/d/Y g:i a',
 				'return_format' => 'Y-m-d H:i:s',
-				'first_day' => 1,
+				'first_day' => 0,
 			),
 			array(
 				'key' => 'field_61801c2e0a97e',
@@ -62,7 +62,7 @@ if( function_exists('acf_add_local_field_group') ):
 				),
 				'display_format' => 'm/d/Y g:i a',
 				'return_format' => 'Y-m-d H:i:s',
-				'first_day' => 1,
+				'first_day' => 0,
 			),
 			array(
 				'key' => 'field_61801c7bf7db8',
@@ -117,6 +117,7 @@ if( function_exists('acf_add_local_field_group') ):
 		'hide_on_screen' => '',
 		'active' => true,
 		'description' => '',
+		'show_in_rest' => 0,
 	));
 
 	endif;
