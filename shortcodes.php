@@ -210,7 +210,8 @@ function mu_livestream_past( $atts, $content = null ) {
 			$html .= '<img src="' . esc_url( get_field( 'mu_livestream_thumbnail', get_the_ID() )['url'] ) . '" class="rounded-t" />';
 			$html .= '<div class="bg-gray-100 px-6 py-4 rounded-b">';
 			$html .= '<div class="text-xl font-semibold group-hover:underline">' . esc_attr( get_the_title() ) . '</div>';
-			$html .= '<div class="text-sm uppercase font-medium mt-1">' . esc_attr( Carbon::parse( get_field( 'mu_livestream_end', get_the_ID() ) )->diffForHumans() ) . '</div>';
+			// $html .= '<div class="text-sm uppercase font-medium mt-1">' . esc_attr( Carbon::parse( get_field( 'mu_livestream_end', get_the_ID() ) )->diffForHumans() ) . '</div>';
+			$html .= '<div class="text-sm uppercase font-medium mt-1">' . esc_attr( Carbon::parse( get_field( 'mu_livestream_end', get_the_ID() ) )->format( 'l, F j, Y g:i A' ) ) . '</div>';
 			$html .= '</div>';
 			$html .= '</a>';
 			$html .= '</div>';
