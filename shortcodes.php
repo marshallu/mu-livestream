@@ -98,6 +98,9 @@ function mu_livestream_past( $atts, $content = null ) {
 		$atts
 	);
 
+	echo date( 'Y-m-d H:i:s' );
+
+	// echo Carbon::now()->format( 'Y-m-d H:i:s' );
 	$livestream_query = new WP_Query(
 		array(
 			'post_type'      => 'mu-livestream',
