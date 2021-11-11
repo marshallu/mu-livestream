@@ -58,7 +58,7 @@ function mu_livestream_live( $atts, $content = null ) {
 		)
 	);
 
-	$html = '<div class="mb-4">';
+	$html = '<div class="mb-6">';
 	if ( $livestream_query->have_posts() ) {
 		$html .= '<h2>' . esc_attr( $data['title'] ) . '</h2>';
 		$html .= '<div class="flex flex-wrap lg:-mx-6">';
@@ -140,7 +140,7 @@ function mu_livestream_upcoming( $atts, $content = null ) {
 		)
 	);
 
-	$html = '<div class="mb-4">';
+	$html = '<div class="mb-6">';
 	if ( $livestream_query->have_posts() ) {
 		$html .= '<h2>' . esc_attr( $data['title'] ) . '</h2>';
 		$html .= '<div class="flex flex-wrap lg:-mx-6">';
