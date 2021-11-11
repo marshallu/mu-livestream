@@ -234,5 +234,13 @@ function mu_livestream_custom_columns( $column, $post_id ) {
 }
 add_action( 'manage_mu-livestream_posts_custom_column', 'mu_livestream_custom_columns', 10, 2 );
 
+/**
+ * Proper way to enqueue scripts and styles
+ */
+function mu_livestream_scripts() {
+	wp_enqueue_style( 'mu-livestream', plugin_dir_path( __FILE__ ) . 'css/mu-livestream.css', '', true );
+}
+add_action( 'wp_enqueue_scripts', 'mu_livestream_scripts' );
+
 add_action( 'init', 'mu_livestream_post_type' );
 add_action( 'init', 'mu_add_channel_taxonomy' );
