@@ -34,7 +34,7 @@ function mu_livestream_upcoming( $atts, $content = null ) {
 			'meta_key'       => 'mu_livestream_start', // phpcs:ignore
 			'orderby'        => 'meta_value',
 			'meta_type'      => 'DATETIME',
-			'order'          => 'DESC',
+			'order'          => 'ASC',
 			'meta_query'     => array( // phpcs:ignore
 				'relation' => 'AND',
 				array(
