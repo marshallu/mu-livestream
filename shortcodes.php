@@ -75,6 +75,7 @@ function mu_livestream_upcoming( $atts, $content = null ) {
 	}
 
 	$html .= '</div>';
+	wp_reset_postdata();
 	return $html;
 }
 add_shortcode( 'mu_livestream_upcoming', 'mu_livestream_upcoming' );
@@ -147,6 +148,7 @@ function mu_livestream_past( $atts, $content = null ) {
 		$html .= '<p>No past livestreams found.</p>';
 	}
 	$html .= '</div>';
+	wp_reset_postdata();
 	return $html;
 }
 add_shortcode( 'mu_livestream_past', 'mu_livestream_past' );
