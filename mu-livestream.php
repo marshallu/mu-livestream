@@ -333,7 +333,7 @@ function mu_livestream_update_keywords( $post_id ) {
 		$post_title = get_the_title( $post_id );
 		$keywords   = get_field( 'mu_livestream_keywords' );
 
-		if ( strpos( $keywords, $post_title ) ) {
+		if ( ! strpos( $keywords, $post_title ) ) {
 			$new_keywords = $post_title . ' ' . $keywords;
 			update_field( 'mu_livestream_keywords', $new_keywords, $post_id );
 		}
