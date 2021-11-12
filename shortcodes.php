@@ -139,7 +139,7 @@ function mu_livestream_display( $atts, $content = null ) {
 		}
 
 		if ( 'search' === $data['type'] ) {
-			$html .= '<div class="my-4 uppercase text-lg"><strong>Search Term:</strong> ' . esc_attr( $search_term ) . '</div>';
+			$html .= '<div class="my-4 text-lg"><strong>Search Term:</strong> ' . esc_attr( $search_term ) . '</div>';
 		}
 
 		$html .= '<div class="flex flex-wrap lg:-mx-6">';
