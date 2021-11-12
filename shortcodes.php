@@ -122,8 +122,7 @@ function mu_livestream_display( $atts, $content = null ) {
 		while ( $livestream_query->have_posts() ) {
 			$livestream_query->the_post();
 			$html .= '<div class="w-full lg:w-1/3 lg:px-6 mb-6 flex">';
-			$html .= '<div>';
-			$html .= '<a href="' . get_the_permalink() . '" class="text-gray-700 group no-underline block ">';
+			$html .= '<a href="' . get_the_permalink() . '" class="text-gray-700 group no-underline flex flex-col">';
 
 			$html .= '<div class="relative">';
 			$html .= '<div class="absolute inset-0 z-10 bg-gradient-to-t from-transparent to-transparent group-hover:from-black-50 flex items-center justify-center h-full w-full transition-all duration-150 ease-in-out">';
@@ -134,12 +133,11 @@ function mu_livestream_display( $atts, $content = null ) {
 			$html .= '</div>';
 			$html .= '</div>';
 
-			$html .= '<div class="bg-gray-100 px-6 py-4 rounded-b">';
+			$html .= '<div class="bg-gray-100 px-6 py-4 rounded-b flex-1">';
 			$html .= '<div class="text-xl font-semibold group-hover:underline">' . esc_attr( get_the_title() ) . '</div>';
 			$html .= '<div class="text-sm uppercase font-medium mt-1">' . esc_attr( Carbon::parse( get_field( 'mu_livestream_start', get_the_ID() ) )->format( 'l, F j, Y g:i A' ) ) . '</div>';
 			$html .= '</div>';
 			$html .= '</a>';
-			$html .= '</div>';
 			$html .= '</div>';
 		}
 		$html .= '</div>';
