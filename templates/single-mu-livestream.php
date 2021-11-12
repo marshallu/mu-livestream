@@ -28,6 +28,13 @@ get_template_part( 'template-parts/hero/no-hero' ); ?>
 			</header>
 			<article <?php post_class( 'entry-content' ); ?> id="post-<?php the_ID(); ?>">
 			<?php
+
+			if ( get_field( 'mu_livestream_notes' ) ) {
+				?>
+					<div class="my-6"><?php echo wp_kses_post( get_field( 'mu_livestream_notes' ) ); ?></div>
+				<?php
+			}
+
 			if ( get_field( 'mu_livestream_archive_event_id' ) && Carbon::parse( get_field( 'mu_livestream_end_time' ) ) < Carbon::now()->timezone( 'America/Detroit' ) ) {
 				?>
 				<div class="yt relative h-0" style="padding-bottom: 56.25%;">

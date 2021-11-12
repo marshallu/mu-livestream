@@ -31,7 +31,7 @@ function mu_livestream_display( $atts, $content = null ) {
 		$livestream_query = new WP_Query(
 			array(
 				'post_type'      => 'mu-livestream',
-				'posts_per_page' => 25,
+				'posts_per_page' => 12,
 				'meta_key'       => 'mu_livestream_start', // phpcs:ignore
 				'orderby'        => 'meta_value',
 				'meta_type'      => 'DATETIME',
@@ -127,7 +127,13 @@ function mu_livestream_display( $atts, $content = null ) {
 				'orderby'        => 'meta_value',
 				'meta_type'      => 'DATETIME',
 				'order'          => 'DESC',
-				'extend_where'   => "(post_title like '%" . $search_term . "%')",
+				'meta_query'     => array(  // phpcs:ignore
+					array(
+						'key'     => 'mu_livestream_keywords',
+						'value'   => $search_term,
+						'compare' => 'LIKE',
+					),
+				),
 			)
 		);
 	}
@@ -139,7 +145,7 @@ function mu_livestream_display( $atts, $content = null ) {
 		}
 
 		if ( 'search' === $data['type'] ) {
-			$html .= '<div class="my-4 text-lg"><strong>Search Term:</strong> ' . esc_attr( $search_term ) . '</div>';
+			$html .= '<div class="my-4  text-lg"><strong>Search Term:</strong> ' . esc_attr( $search_term ) . '</div>';
 		}
 
 		$html .= '<div class="flex flex-wrap lg:-mx-6">';
