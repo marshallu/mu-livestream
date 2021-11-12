@@ -137,6 +137,11 @@ function mu_livestream_display( $atts, $content = null ) {
 		if ( '' !== $data['title'] ) {
 			$html .= '<h2>' . esc_attr( $data['title'] ) . '</h2>';
 		}
+
+		if ( 'search' === $data['type'] ) {
+			$html .= '<div class="my-4 uppercase text-lg"><strong>Search Term:</strong> ' . esc_attr( $search_term ) . '</div>';
+		}
+
 		$html .= '<div class="flex flex-wrap lg:-mx-6">';
 
 		while ( $livestream_query->have_posts() ) {
