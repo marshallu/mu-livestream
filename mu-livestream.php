@@ -331,12 +331,9 @@ add_filter( 'query_vars', 'mu_livestream_url_parameters' );
 function mu_livestream_update_keywords( $post_id ) {
 	if ( 'mu-livestream' === get_post_type( $post_id ) ) {
 		$post_title = get_the_title( $post_id );
-		$keywords   = get_field( 'mu_livestream_keywords' );
-
-		if ( ! strpos( $keywords, $post_title ) ) {
-			$new_keywords = $post_title . ' ' . $keywords;
-			update_field( 'mu_livestream_keywords', $new_keywords, $post_id );
-		}
+		$keywords   = str_replace( $post_title, '', get_field( 'mu_livestream_keywords', $post_id ) );
+		$new_keywords = $post_title . ' ' . $keywords;
+		update_field( 'mu_livestream_keywords', $new_keywords, $post_id );
 	}
 }
 add_action( 'acf/save_post', 'mu_livestream_update_keywords' );
