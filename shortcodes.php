@@ -134,7 +134,9 @@ function mu_livestream_display( $atts, $content = null ) {
 
 	$html = '<div class="mb-6">';
 	if ( $livestream_query->have_posts() ) {
-		$html .= '<h2>' . esc_attr( $data['title'] ) . '</h2>';
+		if ( '' !== $data['title'] ) {
+			$html .= '<h2>' . esc_attr( $data['title'] ) . '</h2>';
+		}
 		$html .= '<div class="flex flex-wrap lg:-mx-6">';
 
 		while ( $livestream_query->have_posts() ) {
