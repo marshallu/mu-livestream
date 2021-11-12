@@ -70,7 +70,7 @@ function mu_livestream_live( $atts, $content = null ) {
 			$html .= '<a href="' . get_the_permalink() . '" class="text-gray-700 group no-underline">';
 			$html .= '<div class="relative">';
 			$html .= '<div class="absolute inset-0 z-10 bg-gradient-to-t from-transparent to-transparent group-hover:from-black-50 flex items-center justify-center h-full w-full transition-all duration-150 ease-in-out">';
-			$html .= '<svg class="transition-all duration-150 ease-in-out h-16 w-16 opacity-0 group-hover:opacity-100 fill-current text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm115.7 272l-176 101c-15.8 8.8-35.7-2.5-35.7-21V152c0-18.4 19.8-29.8 35.7-21l176 107c16.4 9.2 16.4 32.9 0 42z"></path></svg>';
+			$html .= '<svg class="transition-all delay-75 duration-150 ease-in-out h-16 w-16 opacity-0 group-hover:opacity-100 fill-current text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm115.7 272l-176 101c-15.8 8.8-35.7-2.5-35.7-21V152c0-18.4 19.8-29.8 35.7-21l176 107c16.4 9.2 16.4 32.9 0 42z"></path></svg>';
 			$html .= '</div>';
 			$html .= '<div class="relative">';
 			$html .= '<img src="' . esc_url( get_field( 'mu_livestream_thumbnail', get_the_ID() )['url'] ) . '" class="rounded-t" />';
@@ -153,7 +153,7 @@ function mu_livestream_upcoming( $atts, $content = null ) {
 
 			$html .= '<div class="relative">';
 			$html .= '<div class="absolute inset-0 z-10 bg-gradient-to-t from-transparent to-transparent group-hover:from-black-50 flex items-center justify-center h-full w-full transition-all duration-150 ease-in-out">';
-			$html .= '<svg class="transition-all duration-150 ease-in-out h-16 w-16 opacity-0 group-hover:opacity-100 fill-current text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm115.7 272l-176 101c-15.8 8.8-35.7-2.5-35.7-21V152c0-18.4 19.8-29.8 35.7-21l176 107c16.4 9.2 16.4 32.9 0 42z"></path></svg>';
+			$html .= '<svg class="transition-all delay-75 duration-150 ease-in-out h-16 w-16 opacity-0 group-hover:opacity-100 fill-current text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm115.7 272l-176 101c-15.8 8.8-35.7-2.5-35.7-21V152c0-18.4 19.8-29.8 35.7-21l176 107c16.4 9.2 16.4 32.9 0 42z"></path></svg>';
 			$html .= '</div>';
 			$html .= '<div class="relative">';
 			$html .= '<img src="' . esc_url( get_field( 'mu_livestream_thumbnail', get_the_ID() )['url'] ) . '" class="rounded-t" />';
@@ -230,7 +230,7 @@ function mu_livestream_past( $atts, $content = null ) {
 			$html .= '<a href="' . get_the_permalink() . '" class="text-gray-700 group no-underline flex flex-col">';
 			$html .= '<div class="relative">';
 			$html .= '<div class="absolute inset-0 z-10 bg-gradient-to-t from-transparent to-transparent group-hover:from-black-50 flex items-center justify-center h-full w-full transition-all duration-150 ease-in-out">';
-			$html .= '<svg class="transition-all duration-150 ease-in-out h-16 w-16 opacity-0 group-hover:opacity-100 fill-current text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm115.7 272l-176 101c-15.8 8.8-35.7-2.5-35.7-21V152c0-18.4 19.8-29.8 35.7-21l176 107c16.4 9.2 16.4 32.9 0 42z"></path></svg>';
+			$html .= '<svg class="transition-all delay-75 duration-150 ease-in-out h-16 w-16 opacity-0 group-hover:opacity-100 fill-current text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm115.7 272l-176 101c-15.8 8.8-35.7-2.5-35.7-21V152c0-18.4 19.8-29.8 35.7-21l176 107c16.4 9.2 16.4 32.9 0 42z"></path></svg>';
 			$html .= '</div>';
 			$html .= '<div class="relative">';
 			$html .= '<img src="' . esc_url( get_field( 'mu_livestream_thumbnail', get_the_ID() )['url'] ) . '" class="rounded-t" />';
