@@ -31,7 +31,7 @@ function mu_livestream_display( $atts, $content = null ) {
 		$livestream_query = new WP_Query(
 			array(
 				'post_type'      => 'mu-livestream',
-				'posts_per_page' => 12,
+				'posts_per_page' => 25,
 				'meta_key'       => 'mu_livestream_start', // phpcs:ignore
 				'orderby'        => 'meta_value',
 				'meta_type'      => 'DATETIME',
