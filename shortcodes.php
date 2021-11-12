@@ -119,7 +119,6 @@ function mu_livestream_display( $atts, $content = null ) {
 			$search_term = '';
 		}
 
-		echo 'search term:' . $search_term;
 		$livestream_query = new WP_Query(
 			array(
 				'post_type'      => 'mu-livestream',
