@@ -323,5 +323,23 @@ function mu_livestream_url_parameters( $vars ) {
 }
 add_filter( 'query_vars', 'mu_livestream_url_parameters' );
 
+/**
+ * Add the post title to the keywords if they don't exist
+ *
+ * @param integer $post_id The ID of the Post.
+ */
+function mu_livestream_update_keywords( $post_id ) {
+	if ( 'mu-livestream' === get_post_type( $post_id ) ) {
+		$post_title = get_the_title( $post_id );
+		$keywords   = get_field( 'mu_livestream_keywords' );
+
+		if ( strpos( $keywords, $post_title ) ) {
+			$new_keywords = $post_title . ' ' . $keywords;
+			update_field( 'mu_livestream_keywords', $new_keywords, $post_id );
+		}
+	}
+}
+add_action( 'acf/save_post', 'mu_livestream_update_keywords' );
+
 add_action( 'init', 'mu_livestream_post_type' );
 add_action( 'init', 'mu_add_channel_taxonomy' );
