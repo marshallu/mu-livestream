@@ -112,6 +112,24 @@ function mu_livestream_display( $atts, $content = null ) {
 				),
 			)
 		);
+	} elseif ( 'search' === $data['type'] ) {
+		if ( get_query_var( 'video' ) ) {
+			$search_term = get_query_var( 'video' );
+		} else {
+			$search_term = '';
+		}
+
+		$livestream_query = new WP_Query(
+			array(
+				'post_type'      => 'mu-livestream',
+				'posts_per_page' => 100,
+				'meta_key'       => 'mu_livestream_start', // phpcs:ignore
+				'orderby'        => 'meta_value',
+				'meta_type'      => 'DATETIME',
+				'order'          => 'DESC',
+				'extend_where'   => "(post_title like '%" . $search_term . "%')",
+			)
+		);
 	}
 
 	$html = '<div class="mb-6">';
@@ -147,3 +165,31 @@ function mu_livestream_display( $atts, $content = null ) {
 	return $html;
 }
 add_shortcode( 'mu_livestream', 'mu_livestream_display' );
+
+/**
+ * Shortcode to search livestreams
+ *
+ * @param array  $atts Shortcode attributes.
+ * @param string $content Shortcode content.
+ *
+ * @return string Shortcode output.
+ */
+function mu_livestream_search( $atts, $content = null ) {
+	$data = shortcode_atts(
+		array(
+			'action' => get_site_url() . '/search',
+		),
+		$atts
+	);
+
+	// /wp-json/mu-livestream/v1/videos
+	$html  = '<div>';
+	$html .= '<form method="get" action="' . esc_url( $data['action'] ) . '" novalidate>';
+	$html .= '<label for="video" class="sr-only">Search</label>';
+	$html .= '<input id="video" name="video" type="text" class="w-full text-input" placeholder="Search videos..." />';
+	$html .= '<button type="submit" aria-label="Search" class="hidden">Search</button>';
+	$html .= '</form>';
+	$html .= '</div>';
+	return $html;
+}
+add_shortcode( 'mu_livestream_search', 'mu_livestream_search' );

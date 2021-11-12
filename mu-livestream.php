@@ -244,5 +244,84 @@ function load_livestream_template( $template ) {
 }
 add_filter( 'single_template', 'load_livestream_template' );
 
+
+/**
+ * Add custom API endpoint for videos listing
+ *
+ * @link
+ */
+function mu_livestream_videos_api_listing() {
+
+	if ( false === get_transient( 'mu-livestream-videos' ) ) {
+
+		$videos = array();
+
+		$args = array(
+			'post_type'      => 'mu-livestream',
+			'post_status'    => 'publish',
+			'posts_per_page' => 300, // phpcs:ignore
+			'meta_key'       => 'mu_livestream_start', // phpcs:ignore
+			'orderby'        => 'meta_value',
+			'meta_type'      => 'DATETIME',
+			'order'          => 'DESC',
+		);
+
+		$the_query = new WP_Query( $args );
+
+		while ( $the_query->have_posts() ) {
+			$the_query->the_post();
+
+			$video = array(
+				'id'              => get_the_ID(),
+				'video_title'     => get_post_field( 'post_title', get_the_ID(), 'raw' ),
+				'video_url'       => get_the_permalink(),
+				'video_thumbnail' => esc_url( get_field( 'mu_livestream_thumbnail', get_the_ID() )['url'] ),
+				'video_date'      => esc_attr( Carbon::parse( get_field( 'mu_livestream_start', get_the_ID() ) )->format( 'l, F j, Y' ) ),
+			);
+
+			array_push( $videos, $video );
+		}
+
+		wp_reset_postdata();
+
+		set_transient( 'mu-livestream-videos', $videos, 43000 );
+
+	} else {
+		$videos = get_transient( 'mu-livestream-videos' );
+	}
+
+	$response = new WP_REST_Response( $videos );
+	$response->set_status( 200 );
+
+	return $response;
+}
+
+add_action(
+	'rest_api_init',
+	function () {
+		register_rest_route(
+			'mu-livestream/v1',
+			'videos',
+			array(
+				'methods'  => 'GET',
+				'callback' => 'mu_livestream_videos_api_listing',
+			)
+		);
+	}
+);
+
+
+/**
+ * Add 'alpha' to the acceptable URL parameters
+ *
+ * @param array $vars The array of acceptable URL parameters.
+ * @return array
+ */
+function mu_livestream_url_parameters( $vars ) {
+	$vars[] = 'video';
+	return $vars;
+}
+add_filter( 'query_vars', 'mu_livestream_url_parameters' );
+
 add_action( 'init', 'mu_livestream_post_type' );
 add_action( 'init', 'mu_add_channel_taxonomy' );
