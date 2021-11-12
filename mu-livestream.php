@@ -15,13 +15,7 @@
 
 use Carbon\Carbon;
 
-// require WP_PLUGIN_DIR . '/mu-livestream/vendor/autoload.php';
-
-// use Carbon\Carbon;
-
 require plugin_dir_path( __FILE__ ) . '/acf-fields.php';
-// require plugin_dir_path( __FILE__ ) . '/display-custom.php';
-// require plugin_dir_path( __FILE__ ) . '/editor.php';
 require plugin_dir_path( __FILE__ ) . '/shortcodes.php';
 
 if ( ! class_exists( 'ACF' ) ) {
@@ -236,10 +230,10 @@ add_action( 'wp_enqueue_scripts', 'mu_livestream_scripts' );
 /**
  * Load Livestream Template
  *
- * @param string $template The filename of the template for a single program.
+ * @param string $template The filename of the template for a livestream.
  * @return string
  */
-function load_program_template( $template ) {
+function load_livestream_template( $template ) {
 	global $post;
 
 	if ( 'mu-livestream' === $post->post_type && locate_template( array( 'single-mu-livestream.php' ) ) !== $template ) {
@@ -248,7 +242,7 @@ function load_program_template( $template ) {
 
 	return $template;
 }
-add_filter( 'single_template', 'load_program_template' );
+add_filter( 'single_template', 'load_livestream_template' );
 
 add_action( 'init', 'mu_livestream_post_type' );
 add_action( 'init', 'mu_add_channel_taxonomy' );

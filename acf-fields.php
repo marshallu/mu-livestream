@@ -11,7 +11,7 @@ if( function_exists('acf_add_local_field_group') ):
 				'label' => 'Thumbnail',
 				'name' => 'mu_livestream_thumbnail',
 				'type' => 'image',
-				'instructions' => '',
+				'instructions' => 'The maximum size of the image allowed is 1MB.',
 				'required' => 0,
 				'conditional_logic' => 0,
 				'wrapper' => array(
@@ -27,7 +27,7 @@ if( function_exists('acf_add_local_field_group') ):
 				'min_size' => '',
 				'max_width' => '',
 				'max_height' => '',
-				'max_size' => '',
+				'max_size' => 1,
 				'mime_types' => '',
 			),
 			array(
